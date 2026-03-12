@@ -7,9 +7,9 @@
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat&logo=scikit-learn&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-blue?style=flat)
 
-**User-User Collaborative Filtering for Swipe-Based Dating Apps**
+**User-user collaborative filtering for swipe-based dating apps**
 
-*A production-ready recommendation system using implicit feedback matrix factorisation*
+*Notebook project with a lightweight runnable CLI for evaluation and recommendation lookup*
 
 </div>
 
@@ -51,7 +51,7 @@ The system uses **truncated SVD (Singular Value Decomposition)** on implicit fee
 - **Temporal Validation** — Holds out each user's most recent like for evaluation
 - **Efficient Computation** — Sparse matrix implementation for scalable processing
 - **Top-K Recommendations** — Generates ranked recommendations with filtering of already-seen profiles
-- **Production-Ready** — Includes deployment considerations and architecture guidance
+- **Runnable CLI** — Includes a lightweight command-line entry point for summary, evaluation, and recommendation lookup
 
 ---
 
@@ -145,20 +145,43 @@ This approach simulates real-world scenarios where recommendations are made base
    pip install -r requirements.txt
    ```
 
-4. **Open the notebook:**
+4. **Use the lightweight CLI** (optional but recommended):
+   ```bash
+   python recommender.py summary
+   python recommender.py evaluate --top-k 10
+   python recommender.py recommend --user-id <USER_ID> --top-k 10
+   ```
+
+5. **Open the notebook:**
    ```bash
    jupyter notebook data_scientist_exercise_anonymised.ipynb
    ```
 
-5. **Run all cells** to execute the analysis
+6. **Run all cells** to execute the notebook walkthrough
 
 ### Quick Start
 
-The notebook will automatically download `swipes.csv` via Git LFS when you clone the repository. Simply run all cells to:
+The dataset is tracked via Git LFS. After cloning, run `git lfs pull` if `swipes.csv` is not present locally.
+
+The CLI can be used to:
+
+- inspect dataset shape and date range
+- evaluate the temporal holdout split
+- fetch top-K recommendations for a user id
+
+The notebook remains the best walkthrough for the analysis itself and will:
 - Load and preprocess the data
 - Train the recommendation model
 - Generate recommendations
 - Evaluate performance
+
+### CLI Commands
+
+```bash
+python recommender.py summary
+python recommender.py evaluate --top-k 10
+python recommender.py recommend --user-id 12345 --top-k 10
+```
 
 ---
 
