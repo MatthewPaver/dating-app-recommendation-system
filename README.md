@@ -61,6 +61,25 @@ Run all cells for the full analysis walkthrough: data preprocessing, model train
 
 The system expects `swipes.csv` (tracked via Git LFS) with columns including `decidermemberid`, `othermemberid`, `timestamp`, `like`, gender, and signup metadata. Only positive swipes (`like = 1`) are used as training signal.
 
+## Example Output
+
+Dataset scale from the included anonymised CSV:
+
+```text
+Dataset summary
+Users: 45588
+Profiles: 77752
+Positive interactions: 3413063
+Date range: 2021-01-01 00:00:00 -> 2021-01-04 23:59:59
+```
+
+The CLI also exposes model evaluation and top-K lookup:
+
+```text
+python recommender.py evaluate --top-k 10
+python recommender.py recommend --user-id <USER_ID> --top-k 10
+```
+
 ## Repository Layout
 
 ```text
