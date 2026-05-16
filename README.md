@@ -6,6 +6,7 @@
 ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=flat-square&logo=jupyter&logoColor=white)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
+[![Validate](https://github.com/MatthewPaver/dating-app-recommendation-system/actions/workflows/validate.yml/badge.svg)](https://github.com/MatthewPaver/dating-app-recommendation-system/actions/workflows/validate.yml)
 
 **User-user collaborative filtering for swipe-based dating apps**
 
@@ -56,6 +57,8 @@ Collaborative filtering recommendation system designed for swipe-based dating ap
 The notebook is the primary walkthrough. A lightweight CLI (`recommender.py`) provides a quick interface for dataset summary, model evaluation, and top-K lookups without opening Jupyter.
 
 ## Approach
+
+![Recommendation system architecture](docs/assets/architecture.svg)
 
 - **Implicit feedback** — treats positive swipes as signal; passes and unseen profiles are not assumed negative
 - **Truncated SVD** — learns 32-dimension user and item factors from a sparse interaction matrix
