@@ -56,20 +56,22 @@ The notebook is the primary walkthrough. A lightweight CLI (`recommender.py`) pr
 git clone https://github.com/MatthewPaver/dating-app-recommendation-system.git
 cd dating-app-recommendation-system
 pip install -r requirements.txt
-git lfs pull            # download swipes.csv if not already present
 ```
+
+The repo includes `examples/sample_swipes.csv` so the CLI can be tried without downloading the full Git LFS dataset.
 
 ### CLI
 
 ```bash
-python recommender.py summary
-python recommender.py evaluate --top-k 10
-python recommender.py recommend --user-id <USER_ID> --top-k 10
+python recommender.py --csv examples/sample_swipes.csv summary
+python recommender.py --csv examples/sample_swipes.csv evaluate --top-k 2
+python recommender.py --csv examples/sample_swipes.csv recommend --user-id u1 --top-k 2
 ```
 
 ### Notebook
 
 ```bash
+git lfs pull            # download swipes.csv if not already present
 jupyter notebook data_scientist_exercise_anonymised.ipynb
 ```
 

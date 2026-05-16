@@ -7,3 +7,4 @@ seaborn>=0.13.0
 jupyter>=1.0.0
 nbconvert>=7.16.0
 ipykernel>=7.1.0
+pytest>=8.0,<9.0
