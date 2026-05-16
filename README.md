@@ -20,15 +20,27 @@
 | Section | Where to look |
 |:---|:---|
 | What it solves | Ranks unseen profiles from swipe-style implicit feedback instead of treating the dataset as static EDA |
-| Quick start | [Quick Start](#quick-start) |
+| Quick start | `make demo` or [Quick Start](#quick-start) |
 | Screenshot | [Portfolio Store](https://matthewpaver.github.io/MatthewPaver/store/) |
 | Architecture | [Approach](#approach) |
-| Tests | `python recommender.py evaluate --top-k 10` |
+| Tests | `make test` |
 | Tech stack | `Python` `NumPy` `SciPy` `scikit-learn` `Jupyter` |
 
 ## Status
 
 `Notebook project`
+
+## Reviewer Pack
+
+| Area | Details |
+|:---|:---|
+| What it solves | Uses swipe-style implicit feedback to rank unseen profiles and evaluate recommendations with temporal holdouts. |
+| Screenshot | [Portfolio Store preview](https://matthewpaver.github.io/MatthewPaver/store/preview.html?app=recommender) |
+| Run locally | `make demo` runs evaluation and a sample recommendation lookup using included data. |
+| Tests | `make test` |
+| Demo data | Included at `examples/sample_swipes.csv`; the larger anonymised dataset is tracked separately with Git LFS. |
+| Architecture | CSV interactions -> positive implicit feedback -> temporal split -> sparse matrix -> SVD factors -> Top-K ranking |
+| Limitations | Offline recommendation exercise, not a deployed recommender service with online feedback loops. |
 
 ## Reviewer Notes
 
@@ -55,7 +67,7 @@ The notebook is the primary walkthrough. A lightweight CLI (`recommender.py`) pr
 ```bash
 git clone https://github.com/MatthewPaver/dating-app-recommendation-system.git
 cd dating-app-recommendation-system
-pip install -r requirements.txt
+make demo
 ```
 
 The repo includes `examples/sample_swipes.csv` so the CLI can be tried without downloading the full Git LFS dataset.
