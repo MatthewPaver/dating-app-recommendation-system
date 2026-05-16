@@ -15,6 +15,17 @@
 
 ---
 
+## Portfolio Quick Read
+
+| Section | Where to look |
+|:---|:---|
+| What it solves | Ranks unseen profiles from swipe-style implicit feedback instead of treating the dataset as static EDA |
+| Quick start | [Quick Start](#quick-start) |
+| Screenshot | [Portfolio Store](https://matthewpaver.github.io/MatthewPaver/store/) |
+| Architecture | [Approach](#approach) |
+| Tests | `python recommender.py evaluate --top-k 10` |
+| Tech stack | `Python` `NumPy` `SciPy` `scikit-learn` `Jupyter` |
+
 ## Status
 
 `Notebook project`
