@@ -30,6 +30,13 @@
 
 `Notebook project`
 
+## Reviewer Notes
+
+- **Reproducible path:** the notebook is the narrative walkthrough; `recommender.py` gives a CLI route for repeatable checks.
+- **ML signal:** the project treats swipes as implicit feedback and evaluates ranking quality with a temporal holdout.
+- **Evaluation signal:** Hit Rate@K and MRR@K are exposed through the CLI rather than hidden inside notebook cells.
+- **Known limit:** this is an offline recommendation exercise, not a deployed recommender service.
+
 ## Overview
 
 Collaborative filtering recommendation system designed for swipe-based dating applications. Uses implicit feedback matrix factorisation (truncated SVD) to learn low-dimensional user and item embeddings from swipe data, then ranks unseen profiles by predicted affinity.
