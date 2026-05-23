@@ -48,6 +48,7 @@
 - **Reproducible path:** the notebook is the narrative walkthrough; `recommender.py` gives a CLI route for repeatable checks.
 - **ML signal:** the project treats swipes as implicit feedback and evaluates ranking quality with a temporal holdout.
 - **Evaluation signal:** Hit Rate@K and MRR@K are exposed through the CLI rather than hidden inside notebook cells.
+- **Agent signal:** `recommendation_agents.py` adds fairness, diversity, and explanation reviewers around the deterministic recommender.
 - **Known limit:** this is an offline recommendation exercise, not a deployed recommender service.
 
 ## Overview
