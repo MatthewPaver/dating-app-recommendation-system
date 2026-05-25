@@ -43,6 +43,20 @@
 | Architecture | CSV interactions -> positive implicit feedback -> temporal split -> sparse matrix -> SVD factors -> Top-K ranking |
 | Limitations | Offline recommendation exercise, not a deployed recommender service with online feedback loops. |
 
+## Practical Test
+
+Can swipe history rank unseen profiles in a way that survives a temporal holdout?
+
+The useful check is the full path:
+
+1. Load swipe-style interaction data.
+2. Treat positive swipes as implicit feedback.
+3. Hold out each user's latest positive interaction.
+4. Build sparse user/profile factors.
+5. Measure whether the held-out profile appears in the Top-K ranking.
+
+That is the point of the repo: evaluate the ranking behaviour, not claim a deployed dating product.
+
 ## Reviewer Notes
 
 - **Reproducible path:** the notebook is the narrative walkthrough; `recommender.py` gives a CLI route for repeatable checks.
