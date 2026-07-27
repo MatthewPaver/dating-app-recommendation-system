@@ -39,7 +39,7 @@
 | Screenshot | [Portfolio Store preview](https://matthewpaver.github.io/MatthewPaver/store/preview.html?app=recommender) |
 | Run locally | `make demo` runs evaluation and a sample recommendation lookup using included data. |
 | Tests | `make test` |
-| Demo data | Included at `examples/sample_swipes.csv`; the larger anonymised dataset is tracked separately with Git LFS. |
+| Demo data | Included at `examples/sample_swipes.csv`; larger synthetic datasets can be generated locally. |
 | Architecture | CSV interactions -> positive implicit feedback -> temporal split -> sparse matrix -> SVD factors -> Top-K ranking |
 | Limitations | Offline recommendation exercise, not a deployed recommender service with online feedback loops. |
 
@@ -88,7 +88,7 @@ cd dating-app-recommendation-system
 make demo
 ```
 
-The repo includes `examples/sample_swipes.csv` so the CLI can be tried without downloading the full Git LFS dataset.
+The repository contains only fictional sample data. `make synthetic` creates a larger deterministic dataset locally for the notebook and more substantial experiments.
 
 ### CLI
 
@@ -101,26 +101,34 @@ python recommender.py --csv examples/sample_swipes.csv recommend --user-id u1 --
 ### Notebook
 
 ```bash
-git lfs pull            # download swipes.csv if not already present
-jupyter notebook data_scientist_exercise_anonymised.ipynb
+make notebook
 ```
 
-Run all cells for the full analysis walkthrough: data preprocessing, model training, recommendation generation, and evaluation.
+This generates `data/synthetic_swipes.csv` and opens `recommendation_system_walkthrough.ipynb`. Run all cells for the full analysis walkthrough: data preprocessing, model training, recommendation generation, and evaluation.
+
+### Synthetic data
+
+```bash
+make synthetic
+python recommender.py --csv data/synthetic_swipes.csv evaluate --top-k 10
+```
+
+The generator is deterministic by default and supports `--users`, `--profiles`, `--interactions-per-user`, and `--seed`. Its identifiers and attributes are invented; they do not represent real people.
 
 ## Data Format
 
-The system expects `swipes.csv` (tracked via Git LFS) with columns including `decidermemberid`, `othermemberid`, `timestamp`, `like`, gender, and signup metadata. Only positive swipes (`like = 1`) are used as training signal.
+The system accepts a CSV with `decidermemberid`, `othermemberid`, `timestamp`, and `like`. Optional synthetic demographic and signup fields are used only by the notebook walkthrough. Only positive swipes (`like = 1`) are used as training signal.
 
 ## Example Output
 
-Dataset scale from the included anonymised CSV:
+Output from the included fictional sample:
 
 ```text
 Dataset summary
-Users: 45588
-Profiles: 77752
-Positive interactions: 3413063
-Date range: 2021-01-01 00:00:00 -> 2021-01-04 23:59:59
+Users: 3
+Profiles: 4
+Positive interactions: 9
+Date range: 2021-01-01 09:00:00+00:00 -> 2021-01-01 11:30:00+00:00
 ```
 
 The CLI also exposes model evaluation and top-K lookup:
@@ -133,18 +141,19 @@ python recommender.py recommend --user-id <USER_ID> --top-k 10
 ## Repository Layout
 
 ```text
-data_scientist_exercise_anonymised.ipynb   Main analysis notebook
-recommender.py                             CLI for summary, evaluate, recommend
-swipes.csv                                 Dataset (Git LFS)
-requirements.txt                           Python dependencies
+recommendation_system_walkthrough.ipynb   Synthetic-data analysis notebook
+synthetic_swipes.py                       Deterministic fictional-data generator
+examples/sample_swipes.csv                Tiny fictional smoke-test dataset
+recommender.py                            CLI for summary, evaluate, recommend
+requirements.txt                          Python dependencies
 ```
 
 ## Notes
 
 - This is a technical exercise, not a deployed product. The notebook discusses production considerations (serving, cold-start, feedback loops) as design thinking, not implemented features.
-- Git LFS is required for the dataset.
+- No source or personal dataset is distributed. All committed examples are fictional.
 - CPU is sufficient for training.
 
 ## License
 
-MIT. See [`LICENSE`](LICENSE).
+Code and synthetic examples: MIT. See [`LICENSE`](LICENSE).

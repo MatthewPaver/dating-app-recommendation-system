@@ -1,5 +1,6 @@
-# Data files managed via Git LFS
-# swipes.csv will be tracked with Git LFS
+# Generated or locally supplied data
+swipes.csv
+data/
 
 # Python
 __pycache__/
@@ -24,4 +25,3 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
-

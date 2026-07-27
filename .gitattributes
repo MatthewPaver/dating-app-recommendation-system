@@ -1,4 +1,0 @@
-# Git LFS configuration
-# Track large CSV files with Git LFS
-*.csv filter=lfs diff=lfs merge=lfs -text
-examples/sample_swipes.csv -filter -diff -merge text

@@ -3,8 +3,9 @@ VENV ?= .venv
 PYTHON_BIN := $(VENV)/bin/python
 PIP_BIN := $(PYTHON_BIN) -m pip
 SAMPLE ?= examples/sample_swipes.csv
+SYNTHETIC ?= data/synthetic_swipes.csv
 
-.PHONY: venv install summary demo test notebook
+.PHONY: venv install synthetic summary demo test notebook
 
 venv:
 	$(PYTHON) -m venv $(VENV)
@@ -12,6 +13,9 @@ venv:
 install: venv
 	$(PIP_BIN) install --upgrade pip
 	$(PIP_BIN) install -r requirements.txt
+
+synthetic:
+	$(PYTHON_BIN) synthetic_swipes.py --output $(SYNTHETIC)
 
 summary: install
 	$(PYTHON_BIN) recommender.py --csv $(SAMPLE) summary
@@ -23,5 +27,5 @@ demo: install
 test: install
 	$(PYTHON_BIN) -m pytest tests -q
 
-notebook: install
-	$(PYTHON_BIN) -m jupyter lab data_scientist_exercise_anonymised.ipynb
+notebook: install synthetic
+	$(PYTHON_BIN) -m jupyter lab recommendation_system_walkthrough.ipynb

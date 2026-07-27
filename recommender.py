@@ -19,7 +19,7 @@ REQUIRED_COLUMNS = {"decidermemberid", "othermemberid", "timestamp", "like"}
 def load_likes(csv_path: Path) -> pd.DataFrame:
     if not csv_path.exists():
         raise FileNotFoundError(
-            f"CSV file not found: {csv_path}. If you just cloned the repo, run 'git lfs pull'."
+            f"CSV file not found: {csv_path}. Run 'make synthetic' to generate demo data."
         )
 
     frame = pd.read_csv(csv_path)
@@ -157,7 +157,12 @@ def evaluate(model: dict[str, object], test: pd.DataFrame, top_k: int) -> None:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--csv", type=Path, default=Path("swipes.csv"), help="Path to the swipe dataset CSV.")
+    parser.add_argument(
+        "--csv",
+        type=Path,
+        default=Path("examples/sample_swipes.csv"),
+        help="Path to a swipe dataset CSV.",
+    )
     parser.add_argument("--components", type=int, default=32, help="Maximum latent dimensions for TruncatedSVD.")
 
     subparsers = parser.add_subparsers(dest="command", required=True)
