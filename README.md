@@ -8,7 +8,7 @@
 ![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
 [![Validate](https://github.com/MatthewPaver/dating-app-recommendation-system/actions/workflows/validate.yml/badge.svg)](https://github.com/MatthewPaver/dating-app-recommendation-system/actions/workflows/validate.yml)
 
-**User-user collaborative filtering for swipe-based dating apps**
+**Collaborative filtering lab (swipe-style implicit feedback)**
 
 *Notebook project with a lightweight CLI for evaluation and recommendation lookup*
 
@@ -26,6 +26,19 @@
 | Architecture | [Approach](#approach) |
 | Tests | `make test` |
 | Tech stack | `Python` `NumPy` `SciPy` `scikit-learn` `Jupyter` |
+
+
+## Where this pattern shows up in real work
+
+This is a **recommendation-systems lab**, not a dating product. The dating swipe story is just a familiar implicit-feedback shape.
+
+| Scenario | How the lab maps |
+| --- | --- |
+| **Marketplace / shortlist ranking** | Positive interactions as implicit feedback; rank unseen items with Top-K |
+| **Content or job recommendations** | Same CF path with a temporal holdout so you do not cheat with future clicks |
+| **“What should we show next?” in ops tools** | Honest offline metrics before you wire an online loop |
+
+Portfolio point: I can build and evaluate collaborative filtering under time, not only train a random-split notebook that looks artificially good.
 
 ## Status
 
