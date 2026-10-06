@@ -2,18 +2,30 @@ name: Validate
 
 on:
   push:
+    branches: [main]
   pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-python@v6
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.11"
-      - name: Install dependencies
-        run: make install
+          cache: pip
+          cache-dependency-path: requirements-cli.txt
+      - name: Install command-line dependencies
+        run: make install-cli
       - name: Run tests
         run: make test
       - name: Run CLI smoke test
