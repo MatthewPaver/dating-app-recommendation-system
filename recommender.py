@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Lightweight CLI for training and querying the dating app recommender."""
+"""CLI for evaluating an implicit-feedback recommender against popularity and random baselines."""
 
 from __future__ import annotations
 
