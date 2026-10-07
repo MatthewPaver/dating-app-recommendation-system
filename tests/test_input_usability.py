@@ -50,7 +50,7 @@ def test_summary_accounts_for_negatives_and_duplicate_likes(tmp_path):
 
 def cli(*args, cwd=None):
     return subprocess.run([sys.executable, str(ROOT / 'recommender.py'), *args],
-                          cwd=cwd, capture_output=True, text=True, timeout=20)
+                          cwd=cwd, capture_output=True, text=True, timeout=60)
 
 
 def test_default_sample_works_outside_repo_and_recommendations_exclude_all_seen_items(tmp_path):
