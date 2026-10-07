@@ -198,6 +198,10 @@ Output from the included fictional sample:
 
 ```text
 Dataset summary
+Input rows: 10
+Negative rows: 1
+Duplicate positive rows: 0
+Retained positive rows: 9
 Users: 3
 Profiles: 4
 Positive interactions: 9
